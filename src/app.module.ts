@@ -6,6 +6,7 @@ import { AuthModule } from './auth/auth.module';
 import { FavoritesModule } from './favorites/favorites.module';
 import { CatalogModule } from './catalog/catalog.module';
 import { ProductsModule } from './products/products.module';
+import { AdminModule } from './admin/admin.module';
 
 @Module({
   imports: [
@@ -17,7 +18,8 @@ import { ProductsModule } from './products/products.module';
     CatalogModule,
     ProductsModule,
     CatalogModule,
-    PrismaModule
+    PrismaModule,
+    AdminModule
   ],
 })
 export class AppModule {}
