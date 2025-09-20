@@ -1,4 +1,4 @@
-import { IsDecimal, IsEnum, IsInt, IsOptional, IsString } from 'class-validator';
+import { IsDecimal, IsEnum, IsInt, IsNumber, IsOptional, IsString, maxLength, MaxLength, Min, MinLength } from 'class-validator';
 import { ProductType } from '@prisma/client';
 
 export class CreateProductDto {
@@ -35,5 +35,41 @@ export class UpdateProductDto {
 
 
 
+
+}
+
+
+export class createBrandDto {
+
+  @MinLength(2)
+  @IsString() 
+  name:string
+}
+
+export class createModelDto {
+  @IsString() 
+  @MinLength(2) 
+  modelName:string
+
+}
+
+export class createYearDto {
+  @IsInt()
+  yearName:number
+}
+
+export class createEngineDto {
+  @IsString()  code:string
+  @IsOptional() @IsString() @MaxLength(10) fuel?:string
+  @IsOptional() @IsInt()  displacement?:number
+  @IsOptional() @IsInt()  hp?:number
+  @IsOptional() @IsString()  transmission?:string
+}
+
+
+export class createAllDto extends createEngineDto {
+  @MinLength(2) @IsString() brandName:string
+  @IsString()  @MinLength(2) modelName:string
+  @IsInt() yearName:number
 
 }

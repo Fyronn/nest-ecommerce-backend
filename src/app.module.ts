@@ -7,6 +7,9 @@ import { FavoritesModule } from './favorites/favorites.module';
 import { CatalogModule } from './catalog/catalog.module';
 import { ProductsModule } from './products/products.module';
 import { AdminModule } from './admin/admin.module';
+import { CategoriesService } from './categories/categories.service';
+import { CategoriesController } from './categories/categories.controller';
+import { CategoriesModule } from './categories/categories.module';
 
 @Module({
   imports: [
@@ -19,7 +22,10 @@ import { AdminModule } from './admin/admin.module';
     ProductsModule,
     CatalogModule,
     PrismaModule,
-    AdminModule
+    AdminModule,
+    CategoriesModule,
   ],
+  providers: [CategoriesService],
+  controllers: [CategoriesController],
 })
 export class AppModule {}
