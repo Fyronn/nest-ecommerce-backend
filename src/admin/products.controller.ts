@@ -5,12 +5,15 @@ import { Roles } from '../common/roles.decorator';
 import { AdminProductsService } from './products.service';
 import {createAllDto, createBrandDto, createEngineDto, createModelDto, CreateProductDto, createYearDto, UpdateProductDto } from './dto/product.dto';
 import { IdsDto } from './dto/ids.dto';
+import { UsersService } from '../users/users.service';
+import { AdminUsersService } from './admin.user.service';
 
 @UseGuards(JwtAuthGuard, RolesGuard)
 @Roles('ADMIN')
 @Controller('admin/products')
 export class AdminProductsController {
-  constructor(private readonly s: AdminProductsService) { }
+  constructor(private readonly s: AdminProductsService , private readonly AdminUserService:AdminUsersService) { }
+  
 
   @Post()
   create(@Body() dto: CreateProductDto) {
@@ -79,15 +82,6 @@ export class AdminProductsController {
 
   }
   //
-
-
-
-
-
-
-
-
-
 
 
 
